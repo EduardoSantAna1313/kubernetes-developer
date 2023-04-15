@@ -1,0 +1,4 @@
+#!/bin/sh
+
+SOB=$(git config github.user)
+grep -qs "^$SOB" "$1" || echo ". Cambio por @$SOB" >> "$1"
