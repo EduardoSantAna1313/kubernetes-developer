@@ -1,0 +1,1 @@
+kubectl create cm my-config-map --from-literal="APP_COLOR=blue" --dry-run=client -o yaml > configmap.yml

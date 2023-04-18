@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-sleep
+spec:
+  selector:
+    matchLabels:
+      app: myapp-sleep-pod
+  template:
+    metadata:
+      labels:
+        app: myapp-sleep-pod
+    spec:
+      containers:
+      - name: myapp
+        image: alpine-sleep:v1
+        command:
+          - "sleep"
+        args:
+          - "10"

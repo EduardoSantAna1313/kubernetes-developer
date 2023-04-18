@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: colorapp-deploy
+spec:
+  selector:
+    matchLabels:
+      app: colorapp-pod
+  template:
+    metadata:
+      labels:
+        app: colorapp-pod
+    spec:
+      containers:
+      - name: colorapp
+        image: kodekloud/webapp-color
+        env:
+          - name: APP_COLOR
+            valueFrom:
+              configMapKeyRef:
+                name: my-config-map
+                key: APP_COLOR
+        ports:
+        - containerPort: 8080
