@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-secrets-deploy
+  labels:
+    name: app-secrets-deploy
+    app: python
+spec:
+  selector:
+    matchLabels:
+      name: app-secrets-pod
+      app: python
+  template:
+    metadata:
+      labels:
+        name: app-secrets-pod
+        app: python
+    spec:
+      containers:
+      - name: appsecrets
+        image: appflask:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        env:
+          - name: APP_COLOR
+            valueFrom:
+              secretKeyRef:
+                name: app-secrets
+                key: APP_COLOR
+          - name: APP_CONTENT
+            valueFrom:
+              secretKeyRef:
+                name: app-secrets
+                key: APP_CONTENT
+
