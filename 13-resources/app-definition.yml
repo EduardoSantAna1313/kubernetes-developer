@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-limited
+  labels:
+    name: myapp-limited
+spec:
+  containers:
+  - name: myapp-limited
+    image: resources:v1
+    resources:
+      limits:
+        memory: "10Mi"
+        cpu: "500m"
+
