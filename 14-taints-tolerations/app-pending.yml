@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod-pending
+spec:
+#  tolerations:
+#    - key: "app"
+#      value: "MyTaint"
+#      operator: Equal
+#      effect: NoSchedule
+  containers:
+    - name: my-pod-pending
+      image: nginx
