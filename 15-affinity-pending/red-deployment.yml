@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: red-deploy
+  labels:
+    color: red
+spec:
+  selector:
+    matchLabels:
+      color: red
+  template:
+    metadata:
+      name: red-pod
+      labels:
+        color: red
+    spec:
+      containers:
+        - name: red
+          image: nginx
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: color
+                  operator: In
+                  values: ["red"]

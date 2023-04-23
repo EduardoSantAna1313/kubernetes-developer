@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue-deploy
+  labels:
+    color: blue
+spec:
+  selector:
+    matchLabels:
+      color: blue
+  template:
+    metadata:
+      name: blue-pod
+      labels:
+        color: blue
+    spec:
+      containers:
+        - name: blue
+          image: ngin
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: "node-role.kubernetes.io/control-plane"
+                    operator: Exists
