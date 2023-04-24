@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deploy
+  labels:
+    app: java
+    name: webapp-deploy
+spec:
+  selector:
+    matchLabels:
+      app: java
+      name: webapp
+  replicas: 2
+  template:
+    metadata:
+      name: webapp
+      labels:
+        app: java
+        name: webapp
+    spec:
+      containers:
+        - name: webapp
+          image: simplewebapp:v1
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 15
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 60
+          ports:
+            - containerPort: 8080

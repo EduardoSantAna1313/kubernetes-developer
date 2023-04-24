@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: simple-webapp
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - '*'
