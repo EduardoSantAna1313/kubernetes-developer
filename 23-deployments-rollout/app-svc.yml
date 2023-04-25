@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-svc
+spec:
+  type: NodePort
+  selector:
+    name: nginx-pod
+    app: frontend
+  ports:
+    - name: teste
+      port: 80
+      targetPort: 80
+      nodePort: 30000

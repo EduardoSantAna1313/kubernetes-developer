@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deploy
+  labels:
+    app: frontend
+spec:
+  selector:
+    matchLabels:
+      name: nginx-pod
+      app: frontend
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  replicas: 4
+  template:
+    metadata:
+      name: nginx-pod
+      labels:
+        name: nginx-pod
+        app: frontend
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx:latest
+          ports:
+            - containerPort: 80
