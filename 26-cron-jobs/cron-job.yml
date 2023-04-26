@@ -13,9 +13,7 @@ spec:
           containers:
           - name: first-cron-job
             image: alpine
-            command:
-            - echo
-            - date
+            command: ["date"]
           restartPolicy: Never
         metadata:
           name: first-cron-job

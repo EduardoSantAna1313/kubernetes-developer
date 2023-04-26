@@ -6,6 +6,9 @@ for ((i=1;i<=5;i++)); do
     kubectl get cj
 
     kubectl get pods
+
 done
+
+kubectl logs -l app=cronjob --prefix=true
 
 kubectl delete -f .
