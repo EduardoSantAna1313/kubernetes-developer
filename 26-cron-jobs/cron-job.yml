@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: first-cron-job
+  labels:
+    app: cronjob
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: first-cron-job
+            image: alpine
+            command:
+            - echo
+            - date
+          restartPolicy: Never
+        metadata:
+          name: first-cron-job
+          labels:
+            app: cronjob
