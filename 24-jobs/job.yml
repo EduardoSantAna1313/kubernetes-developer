@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: first-job
+spec:
+  completions: 3
+  template:
+    metadata:
+      name: first-job-pod
+    spec:
+      containers:
+        - name: first-job-container
+          image: alpine
+          command: ["expr", "1", "+", "2"]
+      restartPolicy: Never

@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: parallel-job
+  labels:
+    app: java
+    name: random
+spec:
+  completions: 3
+  parallelism: 3
+  template:
+    metadata:
+      name: parallel-job
+      labels:
+        app: java
+        name: random
+    spec:
+      containers:
+        - name: parallel-job
+          image: randomerror:v1
+      restartPolicy: Never
+  
