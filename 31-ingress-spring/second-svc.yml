@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: socket-test-second-svc
+  labels:
+    name: socket-test-second-svc
+    app: service
+spec:
+  selector:
+    name: socket-test-second-pod
+    app: java
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30001

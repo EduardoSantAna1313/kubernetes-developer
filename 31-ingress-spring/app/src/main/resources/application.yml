@@ -1,0 +1,7 @@
+server:
+  port: 8080
+  error:
+    include-message: ALWAYS
+k8s:
+  serviceUrl: socket-test-second-pod.default.svc.cluster.local
+  name: local

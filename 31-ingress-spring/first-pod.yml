@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: socket-test-first-pod
+  labels:
+    name: socket-test-first-pod
+    app: java
+spec:
+  containers:
+    - name: socket-test-first-pod
+      image: socket-test:v1
+      ports:
+        - containerPort: 8080
+      env:
+        - name: SERVER_NAME
+          value: "first-pod"
+        - name: POD_URL
+          value: "http://kubernetes.docker.internal:30000"
