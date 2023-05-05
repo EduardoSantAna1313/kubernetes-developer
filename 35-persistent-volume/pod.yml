@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: go-logger-pod
+  labels:
+    app: golang
+    name: go-logger-pod
+spec:
+  containers:
+    - name: go-logger-pod
+      image: goapplogger:v1
+      volumeMounts:
+        - mountPath: /log/
+          name: log-volume
+  volumes:
+    - name: log-volume
+      persistentVolumeClaim:
+        claimName: pvc-log
