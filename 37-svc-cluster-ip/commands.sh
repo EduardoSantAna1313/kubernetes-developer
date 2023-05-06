@@ -20,6 +20,9 @@ else
     printf "\n\n${GREEN}>>> App image created with the tag app-jdbc:v1!${NC}"
 fi
 
+printf "\n\### Creating the secrets ###\n\n"
+
+kubectl create -f secrets.yml
 
 printf "\n\n### Starting the database ###\n\n"
 
@@ -29,7 +32,7 @@ kubectl create -f svc.yml
 
 printf "\n### Waiting for the database... ###\n\n"
 
-sleep 10
+sleep 15
 
 printf "### Starting the Application ###\n\n"
 

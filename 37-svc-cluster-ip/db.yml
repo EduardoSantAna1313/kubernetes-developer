@@ -11,9 +11,15 @@ spec:
       image: psql-custom:v1
       env:
         - name: POSTGRES_USER
-          value: postgres
+          valueFrom:
+            secretKeyRef:
+              key: POSTGRES_USER
+              name: app-secrets
         - name: POSTGRES_PASSWORD
-          value: postgres066252
+          valueFrom:
+            secretKeyRef:
+              key: POSTGRES_PASSWORD
+              name: app-secrets
         - name: POSTGRES_DB
           value: kubernetes
       ports:

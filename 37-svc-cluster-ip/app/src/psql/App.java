@@ -11,17 +11,15 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         String url = System.getenv("POSTGRES_URL");
-        System.out.println("POSTGRES_URL: " + url);
 
         String user = System.getenv("POSTGRES_USER");
-        System.out.println("POSTGRES_USER: " + user);
+        System.out.println("POSTGRES_USER: '" + user + "'");
 
         String password = System.getenv("POSTGRES_PASSWORD");
 
         String timeout = System.getenv("TIMEOUT");
 
         String runs = System.getenv("RUNS");
-        System.out.println("RUNS: " + runs);
 
         Class.forName("org.postgresql.Driver");
         System.out.println("Connecting to psql...");
@@ -46,6 +44,8 @@ public class App {
 
                 Thread.sleep(Integer.valueOf(timeout));
             }
+
+            System.exit(0);
         } catch (SQLException error) {
             System.err.println(error.getMessage());
         }

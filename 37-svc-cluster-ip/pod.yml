@@ -15,12 +15,21 @@ spec:
           cpu: "1000m"
       env:
         - name: POSTGRES_URL
-          value: "jdbc:postgresql://psql-svc:5432/kubernetes"
+          valueFrom:
+            secretKeyRef:
+              key: POSTGRES_URL
+              name: app-secrets
         - name: POSTGRES_USER
-          value: "postgres"
+          valueFrom:
+            secretKeyRef:
+              key: POSTGRES_USER
+              name: app-secrets
         - name: POSTGRES_PASSWORD
-          value: "postgres066252"
+          valueFrom:
+            secretKeyRef:
+              key: POSTGRES_PASSWORD
+              name: app-secrets
         - name: TIMEOUT
           value: "2500"
         - name: RUNS
-          value: "10"
+          value: "2"
