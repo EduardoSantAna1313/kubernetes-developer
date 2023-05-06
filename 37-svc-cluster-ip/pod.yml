@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-jdbc
+spec:
+  containers:
+    - name: app-jdbc
+      image: app-jdbc:v1
+      resources:
+        limits:
+          memory: "100Mi"
+          cpu: "1000m"
+        requests:
+          memory: "100Mi"
+          cpu: "1000m"
+      env:
+        - name: POSTGRES_URL
+          value: "jdbc:postgresql://psql-svc:5432/kubernetes"
+        - name: POSTGRES_USER
+          value: "postgres"
+        - name: POSTGRES_PASSWORD
+          value: "postgres066252"
+        - name: TIMEOUT
+          value: "2500"
+        - name: RUNS
+          value: "10"

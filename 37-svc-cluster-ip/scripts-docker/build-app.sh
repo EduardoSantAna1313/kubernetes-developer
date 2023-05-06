@@ -1,0 +1,1 @@
+docker build -t app-jdbc:v1 ../app/

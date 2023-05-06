@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: psql
+  labels:
+    app: db
+    name: psql
+spec:
+  containers:
+    - name: psql
+      image: psql-custom:v1
+      env:
+        - name: POSTGRES_USER
+          value: postgres
+        - name: POSTGRES_PASSWORD
+          value: postgres066252
+        - name: POSTGRES_DB
+          value: kubernetes
+      ports:
+        - containerPort: 5432
