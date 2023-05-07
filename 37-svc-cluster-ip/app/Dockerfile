@@ -4,6 +4,9 @@ COPY . /app
 
 WORKDIR /app
 
+# download the psql driver
+RUN mkdir libs && curl -o libs/postgresql-42.6.0.jar https://repo1.maven.org/maven2/org/postgresql/postgresql/42.6.0/postgresql-42.6.0.jar
+
 # building...
 RUN javac --release 11 \ 
     --source-path ./src/ \
