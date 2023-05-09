@@ -14,4 +14,4 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   hostPath:
-        path: /run/desktop/mnt/host/c/pv/logs
+    path: /run/desktop/mnt/host/c/pv/logs
