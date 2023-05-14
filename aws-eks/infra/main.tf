@@ -23,7 +23,6 @@ module "eks" {
   }
 
   eks_managed_node_group_defaults = {
-    #ami_type = "AL2_x86_64"
     instance_types = ["t3.small", "t3.medium"]
   }
 

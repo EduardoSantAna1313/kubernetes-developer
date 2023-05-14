@@ -1,0 +1,3 @@
+kubectl proxy
+
+curl http://localhost:8001/
