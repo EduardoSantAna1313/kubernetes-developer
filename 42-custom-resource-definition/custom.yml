@@ -1,0 +1,8 @@
+apiVersion: datasets.kodekloud.com/v1
+kind: Internal
+metadata:
+  name: my-first-crd
+spec:
+  internalLoad: "high"
+  range: 1
+  percentage: "2%"

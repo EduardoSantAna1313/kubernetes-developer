@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: my-alpine
+  name: my-alpine
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-alpine
+  template:
+    metadata:
+      labels:
+        app: my-alpine
+    spec:
+      containers:
+      - name: alpine
+        image: busybox
+        command:
+          - "sh"
+        resources:
+          limits:
+            memory: 10Mi
+            cpu: 1000m
+          requests:
+            memory: 10Mi
+            cpu: 1000m
+
