@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-v1
+  labels:
+    app: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      name: app-v1
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name : app
+          image: appcolor:v1
+          env:
+            - name: APP_COLOR
+              value: blue
+            - name: APP_CONTENT
+              value: "Hello World v1"
+          ports:
+            - containerPort: 80
