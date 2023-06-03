@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-netpol
+spec:
+  policyTypes:
+    - Ingress
+  podSelector:
+    matchLabels:
+      run: secure-pod
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: webapp
+    - ports:
+      - port: 80
+        protocol: TCP

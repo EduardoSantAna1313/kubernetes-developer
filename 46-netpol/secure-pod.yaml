@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: secure-pod
+  name: secure-pod
+  namespace: default
+spec:
+  containers:
+  - image: nginx
+    imagePullPolicy: Always
+    name: secure-pod
