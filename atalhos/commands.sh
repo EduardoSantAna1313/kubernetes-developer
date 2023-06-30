@@ -1,0 +1,5 @@
+alias k="kubectl"
+alias kp="kubectl get pods"
+alias kgd="kubectl get deploy"
+export do="--dry-run=client -o yaml"
+export now="--force --grace-period=0"
