@@ -1,0 +1,15 @@
+pilot:
+  resources:
+    requests:
+      cpu: "500m"
+      memory: "1Gi"
+    limits:
+      cpu: "500m"
+      memory: "1Gi"
+  nodeSelector:
+    eks.amazonaws.com/capacityType: ON_DEMAND
+global:
+  imagePullPolicy: IfNotPresent
+  proxy:
+    autoInject: enabled
+    holdApplicationUntilProxyStarts: true
