@@ -1,7 +1,7 @@
 aws_region = "sa-east-1"
 
 cluster_name    = "my-eks-cluster"
-cluster_version = "1.26"
+cluster_version = "1.27"
 
 # Cluster Node Config
 instance_type = "t3.small"
