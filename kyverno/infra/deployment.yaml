@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-kotlin-spring
+  namespace: demo
+  labels:
+    app: sample-kotlin-spring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-kotlin-spring
+  template:
+    metadata:
+      labels:
+        app: sample-kotlin-spring
+    spec:
+      containers:
+      - name: sample-kotlin-spring # (1)
+        image: kyverno-java:v2
+        env:
+          - name: SERVER_PORT
+            value: "8888"
+        ports:
+        - containerPort: 8888
+        resources:
+          limits:
+            cpu: 2000m # (2)
+            memory: "1Gi"
+          requests:
+            cpu: 500m
+            memory: "1Gi"
+        resizePolicy: # (3)
+        - resourceName: "cpu"
+          restartPolicy: "NotRequired"
+        readinessProbe: # (4)
+          httpGet:
+            path: /actuator/health
+            port: 8888
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 2
+          successThreshold: 1
+          failureThreshold: 3
