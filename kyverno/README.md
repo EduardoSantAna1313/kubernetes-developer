@@ -1,6 +1,8 @@
 ## Redimencionamento de Request/Limit de CPU com Kyverno
 
-Baseado no artigo [Resize CPU Limit To Speed Up Java Startup on Kubernetes](https://piotrminkowski.com/2023/08/22/resize-cpu-limit-to-speed-up-java-startup-on-kubernetes/)
+Baseado no artigo [Resize CPU Limit To Speed Up Java Startup on Kubernetes](https://piotrminkowski.com/2023/08/22/resize-cpu-limit-to-speed-up-java-startup-on-kubernetes/).
+
+Documentação oficial kyverno sobre [Mutate Rules](https://kyverno.io/docs/writing-policies/mutate/).
 
 ## Instalar kyverno no cluster
 
@@ -47,7 +49,7 @@ rules:
 
 A policy abaixo irá alterar o **resources.requests.cpu** para 50m dos containers com nome **sample-kotlin-spring** após o **status.containerStatuses[0].ready** for **true**.
 
-```
+```yaml
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:

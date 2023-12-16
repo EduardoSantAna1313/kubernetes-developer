@@ -1,0 +1,32 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: resize-pod-policy
+  namespace: demo
+spec:
+  mutateExistingOnPolicyUpdate: true
+  rules:
+    - name: resize-pod-policy
+      match:
+        any:
+          - resources: # (1)
+              kinds:
+                - Pod/status
+                - Pod
+      preconditions: 
+        all: # (2)
+          - key: "{{request.object.status.containerStatuses[0].ready}}"
+            operator: Equals
+            value: true
+      mutate:
+        targets:
+          - apiVersion: v1
+            kind: Pod
+            namespace: "demo"
+        patchStrategicMerge:
+          spec:
+            containers:
+              - (name): "*"
+                resources:
+                  requests:
+                    cpu: 50m # (4)
